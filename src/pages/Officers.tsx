@@ -113,7 +113,7 @@ const Officers = () => {
       {/* Officers Grid */}
       <section data-section="officers" className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 ${
+          <div className={`grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto transition-all duration-1000 ${
             isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
           }`}>
             {officers.map((officer, index) => (

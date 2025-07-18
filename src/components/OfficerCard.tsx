@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Mail, Instagram, Linkedin, X } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from '@/components/ui/dialog';
 import officerPlaceholder from '@/assets/officer-placeholder.jpg';
 
 interface Officer {
@@ -40,25 +40,19 @@ const OfficerCard = ({ officer, index }: OfficerCardProps) => {
         >
           <CardContent className="p-0 overflow-hidden">
             {/* Image Container */}
-            <div className="relative overflow-hidden">
-              <img
-                src={officer.image}
-                alt={officer.name}
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className={`absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent transition-opacity duration-300 ${
-                isHovered ? 'opacity-100' : 'opacity-0'
-              }`} />
-              <div className={`absolute bottom-4 left-4 right-4 text-white transition-all duration-300 ${
-                isHovered ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              }`}>
-                <p className="text-sm font-medium">Click to learn more</p>
+            <div className="flex justify-center p-6 pb-0">
+              <div className="relative w-32 h-32 rounded-full overflow-hidden">
+                <img
+                  src={officer.image}
+                  alt={officer.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
               </div>
             </div>
             
             {/* Content */}
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-accent transition-colors duration-300">
+            <div className="px-6 pb-6 text-center">
+              <h3 className="text-xl font-bold text-primary mb-1 group-hover:text-accent transition-colors duration-300">
                 {officer.name}
               </h3>
               <p className="text-accent font-semibold mb-1">
@@ -67,6 +61,11 @@ const OfficerCard = ({ officer, index }: OfficerCardProps) => {
               <p className="text-sm text-muted-foreground">
                 Grade {officer.grade}
               </p>
+              <div className={`mt-3 text-sm text-muted-foreground transition-all duration-300 ${
+                isHovered ? 'opacity-100' : 'opacity-0'
+              }`}>
+                Click to learn more
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -77,6 +76,9 @@ const OfficerCard = ({ officer, index }: OfficerCardProps) => {
           <DialogTitle className="text-2xl font-bold text-primary mb-4">
             {officer.name}
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            Officer profile for {officer.name}, {officer.position}
+          </DialogDescription>
         </DialogHeader>
         
         <div className="space-y-6">
