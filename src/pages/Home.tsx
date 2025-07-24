@@ -131,9 +131,8 @@ const Home = () => {
               Our Mission
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              SkillsUSA is a national education association serving students, teachers, and industry to ensure America has a skilled workforce. 
-              We help our members become world-class workers, leaders, and responsible American citizens through hands-on learning, 
-              career preparation, and competitive excellence.
+            The Mountain House SkillsUSA Chapter empowers students to develop essential technical, leadership, and professional skills through hands-on learning, industry partnerships, and competitive events. 
+            We strive to prepare our members for successful careers, foster community engagement, and cultivate a passion for excellence in their future career fields.
             </p>
           </div>
         </div>

@@ -99,6 +99,7 @@ const About = () => {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 At Mountain House High School, our SkillsUSA chapter is dedicated to developing the whole person - 
                 combining technical skills with leadership, teamwork, citizenship, and character development.
+                More information about SkillsUSA can be found at <a href="https://www.skillsusa.org/" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">skillsusa.org</a>.
               </p>
             </div>
             <div className={`transition-all duration-1000 delay-200 ${isVisible.intro ? 'animate-slide-in-right' : 'opacity-0 translate-x-8'}`}>
