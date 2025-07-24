@@ -94,7 +94,7 @@ const Navigation = () => {
             ? 'max-h-96 opacity-100 translate-y-0' 
             : 'max-h-0 opacity-0 -translate-y-4'
         } overflow-hidden`}>
-          <div className="glass rounded-lg mt-4 p-6 space-y-4 shadow-glass">
+          <div className="glass rounded-lg mt-4 p-6 space-y-4 shadow-glass max-h-80 overflow-y-auto">
             {navItems.map((item, index) => (
               <NavLink
                 key={item.path}
