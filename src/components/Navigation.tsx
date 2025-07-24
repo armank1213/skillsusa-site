@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
@@ -27,9 +27,9 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-background/95 backdrop-blur-md shadow-card'
+          ? 'glass shadow-glass'
           : 'bg-transparent'
       }`}
     >
@@ -38,11 +38,14 @@ const Navigation = () => {
           {/* Logo */}
           <NavLink
             to="/"
-            className="flex items-center space-x-2 text-xl font-bold text-primary hover:text-accent transition-colors"
+            className="flex items-center space-x-2 text-xl font-bold text-primary hover:text-accent transition-all duration-300 group"
           >
-            <span className="bg-gradient-hero bg-clip-text text-transparent">
-              MHHS SkillsUSA
-            </span>
+            <div className="relative">
+              <span className="bg-gradient-accent bg-clip-text text-transparent font-extrabold tracking-tight">
+                MHHS SkillsUSA
+              </span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-accent transition-all duration-300 group-hover:w-full"></div>
+            </div>
           </NavLink>
 
           {/* Desktop Navigation */}
@@ -52,18 +55,18 @@ const Navigation = () => {
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `relative py-2 px-1 text-sm font-medium transition-colors hover:text-accent ${
+                  `relative py-2 px-1 text-sm font-medium transition-all duration-300 hover:text-accent group ${
                     isActive
                       ? 'text-accent'
                       : isScrolled
                       ? 'text-foreground'
                       : 'text-white'
-                  } after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-accent after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${
-                    isActive ? 'after:scale-x-100' : ''
                   }`
                 }
               >
                 {item.label}
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-accent transition-all duration-300 group-hover:w-full"></div>
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-accent transition-all duration-300 group-hover:w-full opacity-50 blur-sm"></div>
               </NavLink>
             ))}
           </div>
@@ -72,40 +75,45 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden relative overflow-hidden btn-modern"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            <div className={`transition-all duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </div>
           </Button>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md border-t border-border shadow-card animate-fade-in">
-            <div className="px-4 py-6 space-y-4">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `block py-2 px-4 text-lg font-medium rounded-lg transition-colors ${
-                      isActive
-                        ? 'bg-accent text-accent-foreground'
-                        : 'text-foreground hover:bg-accent/10 hover:text-accent'
-                    }`
-                  }
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </NavLink>
-              ))}
-            </div>
+        <div className={`md:hidden transition-all duration-500 ease-in-out ${
+          isOpen 
+            ? 'max-h-96 opacity-100 translate-y-0' 
+            : 'max-h-0 opacity-0 -translate-y-4'
+        } overflow-hidden`}>
+          <div className="glass rounded-lg mt-4 p-6 space-y-4 shadow-glass">
+            {navItems.map((item, index) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  `block py-3 px-4 text-lg font-medium rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                    isActive
+                      ? 'bg-gradient-accent text-accent-foreground shadow-glow'
+                      : 'text-foreground hover:bg-accent/10 hover:text-accent'
+                  }`
+                }
+                onClick={() => setIsOpen(false)}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {item.label}
+              </NavLink>
+            ))}
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
