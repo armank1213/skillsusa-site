@@ -37,7 +37,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: ['Montgomery High School', '1016 Murphy Ave', 'San Jose, CA 95131'],
+      details: ['Mountain House High School', '1090 S. Central Parkway', 'Mountain House, CA 95391'],
     },
     {
       icon: Mail,

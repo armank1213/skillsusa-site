@@ -97,7 +97,7 @@ const About = () => {
                 communications, customer service, hospitality, and health services.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                At Montgomery High School, our SkillsUSA chapter is dedicated to developing the whole person - 
+                At Mountain House High School, our SkillsUSA chapter is dedicated to developing the whole person - 
                 combining technical skills with leadership, teamwork, citizenship, and character development.
               </p>
             </div>
