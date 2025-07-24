@@ -109,7 +109,7 @@ const Home = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-4 text-lg backdrop-blur-sm transition-all duration-300 hover:scale-105"
+                  className="bg-transparent text-white font-semibold px-8 py-4 text-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/80 hover:text-primary border-white/30 hover:border-white"
                 >
                   Learn More
                 </Button>
