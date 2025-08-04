@@ -37,7 +37,7 @@ const JoinUs = () => {
     {
       icon: GraduationCap,
       title: 'Current MHHS Student',
-      description: 'Must be enrolled in Montgomery High School with good academic standing (2.5 GPA minimum).',
+      description: 'Must be enrolled in Mountain House High School with good academic standing (3.2 GPA minimum).',
     },
     {
       icon: Clock,
