@@ -54,7 +54,7 @@ const JoinUs = () => {
   const faqItems = [
     {
       question: 'When do you meet?',
-      answer: 'We meet every Wednesday from 3:30 to 4:30 PM in the STEM Building, Room 201. We also have special events and competitions throughout the year.',
+      answer: 'We meet every Wednesday from 3:30 to 4:30 PM in the MPR. We also have special events and competitions throughout the year.',
     },
     {
       question: 'What are the membership dues?',
@@ -97,7 +97,7 @@ const JoinUs = () => {
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-8 py-4 text-lg shadow-hero hover:shadow-card-hover transition-all duration-300 hover:scale-105"
             >
               <a 
-                href="https://forms.google.com/skillsusa-membership" 
+                href="https://forms.gle/dWqSQXMdx99v9F4d6" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
@@ -174,7 +174,7 @@ const JoinUs = () => {
                     </div>
                     <h3 className="font-semibold text-primary mb-2">Attend a Meeting</h3>
                     <p className="text-sm text-muted-foreground">
-                      Come to any Wednesday meeting to meet the team and learn about opportunities
+                      Come to any weekly meeting to meet the team and learn about opportunities
                     </p>
                   </div>
                   <div className="text-center">

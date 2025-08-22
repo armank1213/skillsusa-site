@@ -39,19 +39,22 @@ const Home = () => {
       icon: Target,
       title: 'Leadership',
       description: 'Develop essential leadership skills through hands-on experiences and competitive events that prepare you for future success.',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-500 to-cyan-500',
+      bgColor: 'bg-gradient-to-br from-blue-50 to-cyan-50'
     },
     {
       icon: Cpu,
       title: 'Technology',
       description: 'Master cutting-edge technology and technical skills that are in high demand in today\'s rapidly evolving job market.',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-purple-500 to-pink-500',
+      bgColor: 'bg-gradient-to-br from-purple-50 to-pink-50'
     },
     {
       icon: Users,
       title: 'Teamwork',
       description: 'Build strong collaborative relationships and learn to work effectively with others to achieve common goals.',
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-green-500 to-emerald-500',
+      bgColor: 'bg-gradient-to-br from-green-50 to-emerald-50'
     },
   ];
 
@@ -119,16 +122,36 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Statistics Section */}
+      <section className="py-16 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10 relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="space-y-4">
+              <div className="text-4xl md:text-5xl font-bold text-primary">200+</div>
+              <div className="text-lg text-muted-foreground font-semibold">Active Members</div>
+            </div>
+            <div className="space-y-4">
+              <div className="text-4xl md:text-5xl font-bold text-accent">9</div>
+              <div className="text-lg text-muted-foreground font-semibold">Golds Nationally</div>
+            </div>
+            <div className="space-y-4">
+              <div className="text-4xl md:text-5xl font-bold text-primary">65+</div>
+              <div className="text-lg text-muted-foreground font-semibold">Events & Workshops</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Mission Section */}
-      <section data-section="mission" className="py-20 bg-background relative overflow-hidden">
+      <section data-section="mission" className="py-20 bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className={`text-center mb-16 transition-all duration-1000 ${isVisible.mission ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-accent rounded-full mb-6 animate-bounce-in">
-              <Target className="h-8 w-8 text-white" />
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-accent rounded-full mb-6 animate-bounce-in">
+              <Target className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-              Our Mission
+              Our <span className="text-gradient">Mission</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
             The Mountain House SkillsUSA Chapter empowers students to develop essential technical, leadership, and professional skills through hands-on learning, industry partnerships, and competitive events. 
@@ -139,12 +162,12 @@ const Home = () => {
       </section>
 
       {/* Pillars Section */}
-      <section data-section="pillars" className="py-20 bg-secondary/50 relative overflow-hidden">
+      <section data-section="pillars" className="py-20 bg-gradient-to-br from-secondary/30 via-background to-accent/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-tl from-accent/5 to-primary/5"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className={`text-center mb-16 transition-all duration-1000 ${isVisible.pillars ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-              Our Three Pillars
+              Our Three <span className="text-gradient">Pillars</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               The foundation of everything we do at SkillsUSA
@@ -155,7 +178,7 @@ const Home = () => {
             {pillars.map((pillar, index) => (
               <Card
                 key={pillar.title}
-                className={`glass shadow-glass hover:shadow-glow transition-all duration-500 hover:scale-105 group ${
+                className={`${pillar.bgColor} border-0 shadow-card hover:shadow-card-hover transition-all duration-500 hover:scale-105 group ${
                   isVisible.pillars 
                     ? index === 0 
                       ? 'animate-slide-in-left' 

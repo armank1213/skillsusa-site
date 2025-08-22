@@ -11,19 +11,22 @@ interface Officer {
   position: string;
   grade: string;
   bio: string;
-  funFact: string;
+  funFact?: string;
   email: string;
   instagram?: string;
   linkedin?: string;
   image: string;
+  color?: string;
+  bgColor?: string;
 }
 
 interface OfficerCardProps {
   officer: Officer;
-  index: number;
+  color?: string;
+  bgColor?: string;
 }
 
-const OfficerCard = ({ officer, index }: OfficerCardProps) => {
+const OfficerCard = ({ officer, color = "from-red-500 to-pink-500", bgColor = "bg-gradient-to-br from-red-50 to-pink-50" }: OfficerCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -31,12 +34,11 @@ const OfficerCard = ({ officer, index }: OfficerCardProps) => {
     <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
       <DialogTrigger asChild>
         <Card
-          className={`glass shadow-glass hover:shadow-glow transition-all duration-500 cursor-pointer group overflow-hidden ${
+          className={`${bgColor} border-0 shadow-card hover:shadow-card-hover transition-all duration-500 cursor-pointer group overflow-hidden ${
             isHovered ? 'scale-105' : 'scale-100'
           }`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          style={{ animationDelay: `${index * 100}ms` }}
         >
           <CardContent className="p-0 overflow-hidden">
             {/* Image Container with Enhanced Effects */}
@@ -51,7 +53,7 @@ const OfficerCard = ({ officer, index }: OfficerCardProps) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               {/* Floating Badge */}
-              <div className="absolute top-4 right-4 bg-gradient-accent text-white text-xs font-bold px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <div className={`absolute top-4 right-4 bg-gradient-to-br ${color} text-white text-xs font-bold px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-glow`}>
                 Grade {officer.grade}
               </div>
             </div>
@@ -97,7 +99,7 @@ const OfficerCard = ({ officer, index }: OfficerCardProps) => {
                 alt={officer.name}
                 className="w-32 h-32 rounded-full object-cover shadow-glow"
               />
-              <div className="absolute -inset-2 bg-gradient-accent rounded-full opacity-20 blur-lg"></div>
+              <div className={`absolute -inset-2 bg-gradient-to-br ${color} rounded-full opacity-20 blur-lg`}></div>
             </div>
           </div>
 
@@ -114,7 +116,7 @@ const OfficerCard = ({ officer, index }: OfficerCardProps) => {
           {/* Bio */}
           <div className="bg-background/50 rounded-lg p-4">
             <h4 className="font-semibold text-primary mb-2 flex items-center">
-              <span className="w-2 h-2 bg-gradient-accent rounded-full mr-2"></span>
+              <span className={`w-2 h-2 bg-gradient-to-br ${color} rounded-full mr-2`}></span>
               About
             </h4>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -122,21 +124,10 @@ const OfficerCard = ({ officer, index }: OfficerCardProps) => {
             </p>
           </div>
 
-          {/* Fun Fact */}
-          <div className="bg-accent/5 rounded-lg p-4 border border-accent/20">
-            <h4 className="font-semibold text-primary mb-2 flex items-center">
-              <span className="w-2 h-2 bg-gradient-accent rounded-full mr-2"></span>
-              Fun Fact
-            </h4>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              {officer.funFact}
-            </p>
-          </div>
-
           {/* Contact & Social */}
           <div>
             <h4 className="font-semibold text-primary mb-3 flex items-center">
-              <span className="w-2 h-2 bg-gradient-accent rounded-full mr-2"></span>
+              <span className={`w-2 h-2 bg-gradient-to-br ${color} rounded-full mr-2`}></span>
               Connect
             </h4>
             <div className="flex justify-center space-x-3">
